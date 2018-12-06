@@ -23,6 +23,12 @@ class Organizacao
     private $nome;
 
     /**
+     * @var Campeonato
+     * @ORM\OneToMany(targetEntity="App\Entity\Campeonato", mappedBy="organizacao")
+     */
+    private $campeonatos;
+
+    /**
      * @return mixed
      */ 
     public function getId()
@@ -45,6 +51,24 @@ class Organizacao
     public function setNome(string $nome)
     {
         $this->nome = $nome;
+        return $this;
+    }
+
+    /**
+     * @return Campeonato
+     */ 
+    public function getCampeonatos()
+    {
+        return $this->campeonatos;
+    }
+
+    /**
+     * @param Campeonato $campeonatos
+     * @return self
+     */ 
+    public function setCampeonatos(Campeonato $campeonatos)
+    {
+        $this->campeonatos = $campeonatos;
         return $this;
     }
 }

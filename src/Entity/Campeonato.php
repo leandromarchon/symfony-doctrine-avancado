@@ -20,7 +20,13 @@ class Campeonato
      * @var string
      * @ORM\Column(type="string")
      */
-    private $nome;    
+    private $nome;
+    
+    /**
+     * @var Organizacao
+     * @ORM\ManyToOne(targetEntity="App\Entity\Organizacao", inversedBy="campeonatos")
+     */
+    private $organizacao;
 
     /**
      * @return mixed
@@ -45,6 +51,24 @@ class Campeonato
     public function setNome(string $nome)
     {
         $this->nome = $nome;
+        return $this;
+    }
+
+    /**
+     * @return Organizacao
+     */ 
+    public function getOrganizacao()
+    {
+        return $this->organizacao;
+    }
+
+    /**
+     * @param Organizacao $organizacao
+     * @return self
+     */ 
+    public function setOrganizacao(Organizacao $organizacao)
+    {
+        $this->organizacao = $organizacao;
         return $this;
     }
 }
