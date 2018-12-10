@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Time;
 use App\Entity\Partida;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\VarDumper\VarDumper;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,11 +25,10 @@ class PartidasController extends AbstractController
      */
     public function index()
     {
-        $partidas = $this->entityManager->getRepository(Partida::class)->findAll();
+        $partidas = $this->entityManager->getRepository(Partida::class)->getPartidaPorData();
         
-        return [
-            'partidas' => $partidas
-        ];
+        VarDumper::dump($partidas);
+        exit;
     }
 
     /**
