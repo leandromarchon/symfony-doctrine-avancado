@@ -19,32 +19,11 @@ class CampeonatoRepository extends ServiceEntityRepository
         parent::__construct($registry, Campeonato::class);
     }
 
-    // /**
-    //  * @return Campeonato[] Returns an array of Campeonato objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getAllCampeonatos()
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+                    ->innerJoin('c.organizacao', 'o')
+                    ->getQuery()
+                    ->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Campeonato
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

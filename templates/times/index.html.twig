@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listagem de Times</h1>
+
+    <table class="table table-striped table-hover mt-3">
+        <thead>
+            <tr>
+                <th>Cod.</th>
+                <th>Nome</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for time in times %}
+            <tr>
+                <td>{{ time.id }}</td>
+                <td>{{ time.nome }}</td>
+                <td><a href="{{ path('listar-partidas', {'id': time.id}) }}" class="btn btn-primary">Ver partidas</a></td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">Nenhum registro encontrado!</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

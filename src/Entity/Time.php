@@ -24,7 +24,7 @@ class Time
 
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", name="brasao")
      */
     private $escudo;
 
@@ -93,6 +93,20 @@ class Time
     public function setEscudo(string $escudo)
     {
         $this->escudo = $escudo;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAtivo()
+    {
+        return $this->ativo;
+    }
+
+    public function setAtivo($ativo)
+    {
+        $this->ativo = $ativo;
         return $this;
     }
 
